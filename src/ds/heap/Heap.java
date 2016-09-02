@@ -1,8 +1,12 @@
-package ds.heap.guava_based;
+package ds.heap;
+
+import ds.heap.guava_based.HeapGuavaBasedImpl;
 
 public interface Heap<T extends Comparable<T>> {
   public T peek();
+  
   public void insert(T t);
+  
   public T pop();
 }
 
@@ -13,8 +17,11 @@ class Main{
     Heap<Integer> heap2 = HeapGuavaBasedImpl.createMinHeap();
     heap.insert(1); heap2.insert(3);
     heap.insert(2); heap2.insert(4);
+    heap.insert(-1); heap2.insert(2);
     System.out.println(heap.pop());
     System.out.println(heap.pop());
+    System.out.println(heap.pop());
+    System.out.println(heap2.pop());
     System.out.println(heap2.pop());
     System.out.println(heap2.pop());
   }

@@ -2,6 +2,8 @@ package ds.heap.guava_based;
 
 import com.google.common.collect.MinMaxPriorityQueue;
 
+import ds.heap.Heap;
+
 public class HeapGuavaBasedImpl<T extends Comparable<T>> implements Heap<T>{
     private final MinMaxPriorityQueue<T> heap;
     
