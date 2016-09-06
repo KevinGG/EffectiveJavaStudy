@@ -2,10 +2,10 @@ package ds.tree.bst;
 
 import ds.tree.TreeNode;
 
-public interface BinarySearchTree<N extends TreeNode<?>> {
-  public <K extends Comparable<K>> N search(K k);
+public interface BinarySearchTree<K extends Comparable<K>, T> {
+  public TreeNode<K,T> search(K k);
   
-  public void insert(N t);
+  public void insert(TreeNode<K,T> n);
   
-  public void delete(N t);
+  public void delete(TreeNode<K,T> n);
 }
