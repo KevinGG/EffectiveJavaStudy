@@ -1,4 +1,4 @@
-package SimpleTests;
+package simpletests;
 
 import java.math.BigDecimal;
 import utility.ObjectOutputUtility;

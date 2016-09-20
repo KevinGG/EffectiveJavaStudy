@@ -18,7 +18,8 @@ public class HeapGuavaBasedImpl<T extends Comparable<T>> implements Heap<T>{
     private HeapGuavaBasedImpl(final HeapType heapType){
       switch(heapType){
         case MAX_HEAP:
-          heap = MinMaxPriorityQueue.orderedBy((T t1, T t2) -> t2.compareTo(t1)).expectedSize(1000).create();
+          // only 1 line lambda implementation could omit the return key word.
+          heap = MinMaxPriorityQueue.orderedBy((T t1, T t2) -> { return t2.compareTo(t1);}).expectedSize(1000).create();
           break;
         case MIN_HEAP:
         default:
