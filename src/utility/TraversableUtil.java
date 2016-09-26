@@ -8,7 +8,8 @@ import com.google.common.collect.ImmutableList;
 
 public class TraversableUtil {
   private static final int[] UNSORTED_INT_ARRAY = new int[]{4,7,10,2,18,5,1};
-  private static final ImmutableList<Integer> UNSORTED_INTEGER_ARRAY = ImmutableList.of(4,7,10,2,18,5,1);
+  private static final ImmutableList<Integer> UNSORTED_INTEGER_LIST = ImmutableList.of(4,7,10,2,18,5,1);
+  private static final Integer[] UNSORTED_INTEGER_ARRAY = new Integer[]{4,7,10,2,18,5,1};
   
   public static int[] unsortedIntArray(){
     return Arrays.copyOf(UNSORTED_INT_ARRAY, UNSORTED_INT_ARRAY.length);
@@ -16,7 +17,11 @@ public class TraversableUtil {
   
   public static List<Integer> unsortedIntegerList(){
     final ArrayList<Integer> copy = new ArrayList<>();
-    copy.addAll(UNSORTED_INTEGER_ARRAY);
+    copy.addAll(UNSORTED_INTEGER_LIST);
     return copy;
+  }
+  
+  public static Integer[] unsortedIntegerArray(){
+    return Arrays.copyOf(UNSORTED_INTEGER_ARRAY, UNSORTED_INTEGER_ARRAY.length);
   }
 }

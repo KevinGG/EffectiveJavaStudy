@@ -3,7 +3,7 @@ package simpletests.ds.heap;
 import ds.heap.Heap;
 import ds.heap.guava_based.HeapGuavaBasedImpl;
 
-public class Main{
+public class Main_GuavaBased{
   public static void main(String[] argv){
     Heap<Integer> heap = HeapGuavaBasedImpl.createMaxHeap();
     Heap<Integer> heap2 = HeapGuavaBasedImpl.createMinHeap();

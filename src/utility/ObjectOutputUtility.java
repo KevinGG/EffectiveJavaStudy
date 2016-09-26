@@ -44,6 +44,16 @@ public class ObjectOutputUtility {
 	    System.out.print(object.toString());
 	}
 	
+	public static void console(Object[] objects){
+	  console("[");
+      for(int i = 0; i < objects.length - 1; i ++){
+        console(objects[i]);
+        console(", ");
+      }
+      console(objects[objects.length - 1]);
+      consoleNl("]");
+	}
+	
 	public static void consoleNl(Object object){
 		System.out.println(object.toString());
 	}
