@@ -179,4 +179,32 @@ public class BinarySearchTreeImpl<K extends Comparable<K>, T> implements BinaryS
     System.out.println();
     System.out.println("================end=================");
   }
+  
+  public void printTreeInLevelOrder(){
+	  final Queue<TreeNode<K,T>> clvl = new LinkedList<>();
+	  final Queue<TreeNode<K,T>> nlvl = new LinkedList<>();
+	  boolean nlvlAllNull = true;
+	  final LinkedList<TreeNode<K,T>> printList = new LinkedList<>();
+	  clvl.add(root);
+	  while(!clvl.isEmpty()){
+		  TreeNode<K, T> node = clvl.remove();
+		  printList.add(node);
+		  if(node.getLeft() != null){
+			  nlvlAllNull = false;
+			  nlvl.add(node.getLeft());
+		  }
+		  if(node.getRight() != null){
+			  nlvlAllNull = false;
+			  nlvl.add(node.getRight());
+		  }
+		  if(clvl.isEmpty()){
+			  if(nlvlAllNull) break;
+			  clvl.addAll(nlvl);
+			  nlvl.clear();
+			  System.out.print(printList);
+			  printList.clear();
+			  System.out.println();
+		  }
+	  }
+  }
 }
