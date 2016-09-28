@@ -7,13 +7,23 @@ import ds.heap.Heap;
 
 public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
   private List<T> items;
+  private final int minMaxInd;
 
   public static <T extends Comparable<T>> BinaryHeap<T> create() {
-    return new BinaryHeap<>();
+    return new BinaryHeap<>(1);
   }
 
-  private BinaryHeap() {
+  public static <T extends Comparable<T>> BinaryHeap<T> minHeap() {
+    return create();
+  }
+
+  public static <T extends Comparable<T>> BinaryHeap<T> maxHeap() {
+    return new BinaryHeap<>(-1);
+  }
+
+  private BinaryHeap(int minMaxInd) {
     items = new ArrayList<>(1000);
+    this.minMaxInd = minMaxInd;
   }
 
   @Override
@@ -35,7 +45,7 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
     T child = items.get(index);
     final int parentIndex = (index - 1) / 2;
     T parent = items.get(parentIndex);
-    if (parent.compareTo(child) > 0) {
+    if (minMaxInd * parent.compareTo(child) > 0) {
       items.set(parentIndex, child);
       items.set(index, parent);
       swapUp(parentIndex);
@@ -61,7 +71,7 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
     T parent = items.get(index);
     T leftChild = items.get(leftChildIndex);
     if (rightChildIndex >= items.size()) {
-      if (parent.compareTo(leftChild) > 0) {
+      if (minMaxInd * parent.compareTo(leftChild) > 0) {
         items.set(index, leftChild);
         items.set(leftChildIndex, parent);
       }
@@ -69,13 +79,18 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
     }
     T rightChild = items.get(rightChildIndex);
     T childToSwap = leftChild;
-    if (leftChild.compareTo(rightChild) > 0)
+    if (minMaxInd * leftChild.compareTo(rightChild) > 0)
       childToSwap = rightChild;
-    if (parent.compareTo(childToSwap) > 0) {
+    if (minMaxInd * parent.compareTo(childToSwap) > 0) {
       items.set(index, childToSwap);
       final int childIndexToSwap = childToSwap == leftChild ? leftChildIndex : rightChildIndex;
       items.set(childIndexToSwap, parent);
       swapDown(childIndexToSwap);
     }
+  }
+
+  @Override
+  public int size() {
+    return items.size();
   }
 }

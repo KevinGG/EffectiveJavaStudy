@@ -2,9 +2,6 @@ package utility;
 
 import java.util.Collection;
 
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableList;
-
 public class ObjectOutputUtility {
 	private ObjectOutputUtility() {
 		throw new AssertionError();

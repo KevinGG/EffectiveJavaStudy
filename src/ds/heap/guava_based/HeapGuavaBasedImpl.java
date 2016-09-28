@@ -41,9 +41,9 @@ public class HeapGuavaBasedImpl<T extends Comparable<T>> implements Heap<T>{
     public T pop() {
       return heap.poll();
     }
-    
-    private static enum HeapType{
-      MIN_HEAP,
-      MAX_HEAP;
+
+    @Override
+    public int size() {
+      return heap.size();
     }
 }

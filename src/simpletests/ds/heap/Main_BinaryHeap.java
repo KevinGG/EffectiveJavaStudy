@@ -2,7 +2,10 @@ package simpletests.ds.heap;
 
 import ds.heap.Heap;
 import ds.heap.binaryheap.BinaryHeap;
-import static utility.ObjectOutputUtility.console;
+import static utility.ObjectOutputUtility.consoleNl;
+
+import java.util.Arrays;
+
 import utility.TraversableUtil;
 
 public class Main_BinaryHeap {
@@ -12,8 +15,18 @@ public class Main_BinaryHeap {
     for(int i = 0; i < A.length; i++){
       heap.insert(A[i]);
     }
-    while(heap.peek() != null){
-      console(heap.pop() + ", ");
+    for(int i = 0; i < A.length; i++){
+      A[i] = heap.pop();
     }
+    consoleNl(Arrays.toString(A));
+    
+    heap = BinaryHeap.maxHeap();
+    for(int i = 0; i < A.length; i++){
+      heap.insert(A[i]);
+    }
+    for(int i = 0; i < A.length; i++){
+      A[i] = heap.pop();
+    }
+    consoleNl(Arrays.toString(A));
   }
 }
