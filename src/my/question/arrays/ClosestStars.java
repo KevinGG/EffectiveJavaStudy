@@ -32,7 +32,7 @@ public class ClosestStars {
       if(h1 == null || h2 == null) throw new RuntimeException("Null");
       if(h1.size() != h2.size()) throw new RuntimeException("Not same size");
       while(h1.size() > 0){
-        if(h1.pop() != h2.pop()) throw new RuntimeException("Different items found");
+        if(h1.pop().compareTo(h2.pop()) != 0) throw new RuntimeException("Different items found");
       }
     }
   }
