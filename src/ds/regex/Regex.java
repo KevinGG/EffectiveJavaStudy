@@ -8,17 +8,14 @@ public class Regex {
   }
   
   public boolean isMatching(String s){
-    
-    return true;
+    for(int i = 0; i < s.length(); ++i){
+      
+    }
   }
   
   public static void main(String[] argv){
-    String s = "?";
-    System.out.println(s.length());
-    System.out.println(s.charAt(0));
-    
-    String s2 = "" + '?';
-    System.out.println(s2.length());
-    System.out.println(s2.charAt(0));
+    Character c1 = '*';
+    Character c2 = new Character('*');
+    System.out.println(c1.equals(c2));
   }
 }
