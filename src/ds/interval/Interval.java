@@ -1,5 +1,7 @@
 package ds.interval;
 
+import utility.HashCode;
+
 public class Interval {
   private final int endLeft;
   private final int endRight;
@@ -20,6 +22,9 @@ public class Interval {
     this.endRight = endRight;
   }
 
+  /**
+   * Creates an {@link Interval} instance based on the given center point and radius, adjusted by the possible range for all generated instances.
+   */
   public Interval(final int center, final int radius, final Interval range) {
     int left = center - radius;
     int right = center + radius;
@@ -31,14 +36,26 @@ public class Interval {
     this.endRight = right;
   }
 
+  /**
+   * Determines if 2 intervals overlap with each other.
+   */
   public static boolean isOverLapped(final Interval i1, final Interval i2) {
     return !(i1.endLeft > i2.endRight || i1.endRight < i2.endLeft);
   }
 
+  /**
+   * Determines if current interval fully overlap (contain) the given interval.
+   */
   public boolean contains(final Interval i) {
     return this.endLeft <= i.endLeft && this.endRight >= i.endRight;
   }
 
+  /**
+   * Merges 2 intervals to get an new interval
+   * @param i1
+   * @param i2
+   * @return
+   */
   public static Interval mergeIntervals(final Interval i1, final Interval i2) {
     if (i1 == i2)
       return i1;
@@ -64,6 +81,11 @@ public class Interval {
     if (other.endLeft == this.endLeft && other.endRight == this.endRight)
       return true;
     return false;
+  }
+  
+  @Override
+  public int hashCode(){
+    return new HashCode<>(this).hashCode();
   }
 
   public void print() {
