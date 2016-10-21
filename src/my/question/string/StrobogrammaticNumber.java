@@ -8,6 +8,9 @@ import java.util.Set;
 /*
  * Determine a strobogrammatic number, Like "69", "818".
  * A number rotate by 180 degree and still looks like itself
+ * 
+ * The following solution is dumb. Unnecessary recursion and too many boxed primitive type objects created during the process.
+ * Simply use a 10-size int[] to hold the mapping and use 2 pointer to traverse the input String represented number.
  */
 public class StrobogrammaticNumber {
 	Helper helper = new Helper();

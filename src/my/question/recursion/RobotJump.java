@@ -5,7 +5,7 @@ import utility.CustomRandom;
 public class RobotJump {
   private Robot robot = new Robot();
 
-  public void jump1StairUp() {
+  public void jump1StairUp() { // use recursion to achieve jump 1 stair up without using any local variables.
     if (!robot.jump()) {
       jump1StairUp();
       jump1StairUp();
