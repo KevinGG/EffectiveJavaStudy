@@ -58,6 +58,9 @@ public class PlayWithLambda {
     // if using method reference, the input type and output type could both be primitive
     list.sort(Comparator.comparing(PlayWithLambda::reverseOrderFromInt));
     out.println(list);
+    
+    list.sort((i1, i2)->i1-i2);
+    out.println(list);
 
     // the comparator is for String not int, so compile error
     // list.sort(Comparator.comparing(PlayWithLambda::length));
