@@ -20,8 +20,9 @@ public class FunctionalInterface {
     list.add(()->action1);
     list.add(()->action2);
     
-    ActionExecutor<Action> ae = (actionPlan) -> actionPlan.forEach(action -> System.out.println(action.toString()));
+    ActionExecutor<Action> ae = actionPlan -> actionPlan.forEach(action -> System.out.println(action.toString()));
     ae.printActionPlan(list);
     ae.execute(list);
+    ActionExecutor.stream(list).forEach(action -> action.get().takeAction());
   }
 }
