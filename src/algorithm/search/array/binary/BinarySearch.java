@@ -1,6 +1,9 @@
 package algorithm.search.array.binary;
 
+import java.util.Arrays;
 import java.util.List;
+
+import utility.TraversableUtil;
 
 public class BinarySearch<T extends Comparable<T>> {
     public int binarySearch(List<T> list, T key){
@@ -18,5 +21,28 @@ public class BinarySearch<T extends Comparable<T>> {
         else return mid;
       }
       return -1;
+    }
+    
+    public int binarySearch(int[] nums, int key){
+    	if(nums == null || nums.length == 0) return -1;
+    	int bot = 0, top = nums.length - 1;
+    	if(nums[bot] > key || nums[top] < key) return -1;
+    	if(nums[bot] == key) return bot;
+    	if(nums[top] == key) return top;
+    	while(bot < top){
+    		int mid = bot + (top-bot)/2;
+    		if(nums[mid] < key) bot = mid+1;
+    		else if(nums[mid] > key) top = mid-1;
+    		else return mid;
+    	}
+    	return -1;
+    }
+    
+    public static void main(String[] argv){
+    	int[] A = TraversableUtil.unsortedIntArray();
+    	Arrays.sort(A);
+    	System.out.println(Arrays.toString(A));
+    	int result = new BinarySearch<Integer>().binarySearch(A, 18);
+    	System.out.println(result);
     }
 }
